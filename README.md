@@ -127,3 +127,32 @@ Epoch 4/5
 Epoch 5/5
 325/325 [==============================] - 425s 1s/step - loss: 0.2722 - accuracy: 0.8864 - val_loss: 1.7562 - val_accuracy: 0.5492
 ```
+
+# Discussion
+
+**The overall approach**
+Long Short Term Memory (LSTM) is one of the RNNs model that has the idea of connecting previous information to the present task, thus capable of learning long-term dependencies. This could be a model to fit in this case since we have long articles which ideadly should have meaning full sentences.
+
+**The preprocessing steps**
+First import the datasets and seperate them into training and testing sets.
+
+Here we are storing text into X values (str) and labels (1 or 0) into Y values (int).
+
+In addition, we want to tokenize the input in order for the model to learn the rependencies. This means that we have a _word_dict_ dictionnary that has key-value pair representing the occurence of each words. Words are stored as index reference numbers in the keys. Then, we are able to transform texts into sequences.
+
+The _MAX_LEN_ of one training data is 24512. However, for training efficiency, we are only using the first 200 words in each data entry to train the model. This means that we will also add 0 padding the the end of sentences that has less than 200 words.
+
+**Evaluation procedure and metrics**
+
+We are using 20 for input and output dimention. And 279687 as input vocabulary size.
+
+400 internal units in 1 LSTM layer.
+
+1 dense layer of 1 unit.
+
+**Aspects that could be improved**
+
+In this example, we are using the test_set as the validation data set. An improvement on that could be to seperate the training data into 70% for training and 30% for validating. In addition, we are only using text to train the model and not author nor title. This can be improved by prepending author and title in front of text and consider the hole for x_train.
+
+Also, for time saving purpose, we are limiting epoch of training to 5. If we increase number of epoch, we should potentiolly be able to get a higher accuracy.
+
