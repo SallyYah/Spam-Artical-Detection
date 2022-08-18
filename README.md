@@ -32,19 +32,16 @@ y_train = (df_train['label'].values).astype(int)
 
 x_test = df_test['text'].values
 y_test = df_test['label'].values
-
 ```
 
 **Data processing**
+
 Tokenize input text
 
-Generate a word dictionnary with key-value pair that refers to
-
-word:occurence word is represented by integer numbers starting from 1
-
-ordered descending by word frequency of apperence (most to least).
+Generate a word dictionnary with key-value pair (word:occurence) word is represented by integer numbers starting from 1 ordered descending by word frequency of apperence (most to least).
 
 ex: {1:50, 2:10, 3:9}
+
 ```
 tokenizer = Tokenizer(lower=None)
 tokenizer.fit_on_texts(x_train)
@@ -56,6 +53,7 @@ Using word_dict as reference, change text to a sequence
 ex: x_train = "Hello World hi hi"
 
     x_train_seq = [1,2,3,3]
+
 ```
 x_train_seq = tokenizer.texts_to_sequences(x_train)
 x_test_seq = tokenizer.texts_to_sequences(x_test)
@@ -69,11 +67,12 @@ for line in x_train_seq:
 """
 # MAX_LEN = 24512
 ```
+
 For quicker training purpose, MAX_LEN used for each sequence is 200.
 
 Will add padding (0) to end of each line with length < 200
-```
 
+```
 X_train_pad = pad_sequences(x_train_seq, maxlen=200, padding='post')
 X_test_pad = pad_sequences(x_test_seq, maxlen=200, padding='post')
 ```
