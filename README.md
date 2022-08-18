@@ -1,20 +1,26 @@
 # Spam-Artical-Detection
 
+```
+import numpy as np
+import pandas as pd
+
+from keras.preprocessing.text import Tokenizer
+from keras.preprocessing.sequence import pad_sequences
+from keras.models import Sequential
+from keras.layers import Dense, LSTM, Embedding
+```
 
 Outputs:
 
 Model: "sequential_11"
-_________________________________________________________________
 
 Layer (type)                 Output Shape              Param #   
 
 =================================================================
 
 embedding_11 (Embedding)     (None, 20, 20)            5593760   
-_________________________________________________________________
 
 lstm_11 (LSTM)               (None, 400)               673600    
-_________________________________________________________________
 
 dense_11 (Dense)             (None, 1)                 401       
 
@@ -26,9 +32,7 @@ Trainable params: 6,267,761
 
 Non-trainable params: 0
 
-_________________________________________________________________
-
-None
+-----------------------------------------------------------------
 
 Epoch 1/5
 
