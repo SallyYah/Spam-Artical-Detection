@@ -50,9 +50,9 @@ word_dict = tokenizer.index_word
 
 Using word_dict as reference, change text to a sequence
 
-ex: x_train = "Hello World hi hi"
+Example:
 
-    x_train_seq = [1,2,3,3]
+x_train = "Hello World hi hi" -> x_train_seq = [1,2,3,3]
 
 ```
 x_train_seq = tokenizer.texts_to_sequences(x_train)
@@ -94,8 +94,10 @@ print(model.summary())
 
 summary = model.fit(X_train_pad, y_train, epochs=5, batch_size=64, validation_data=(X_test_pad, y_test))
 ```
+
 Outputs:
 
+```
 Model: "sequential_11"
 
 Layer (type)                 Output Shape              Param #   
@@ -144,3 +146,4 @@ Epoch 4/5
 Epoch 5/5
 
 325/325 [==============================] - 425s 1s/step - loss: 0.2722 - accuracy: 0.8864 - val_loss: 1.7562 - val_accuracy: 0.5492
+```
